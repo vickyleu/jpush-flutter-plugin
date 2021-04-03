@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'jpush_flutter'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC
 A new flutter plugin project.
@@ -13,12 +13,8 @@ A new flutter plugin project.
   s.author           = { 'xudong.rao' => 'xudong.rao@outlook.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
-  s.public_header_files = 'Classes/**/*.h'
+  s.public_header_files = 'Classes/**/*.{h}','Framework/**/*.{h}'
   s.dependency 'Flutter'
-  s.subspec 'JPush' do |cs|
-        cs.vendored_libraries  = 'Framework/*.{a}'
-        cs.source_files = 'Framework/*.{h,m}'
-        cs.public_header_files = 'Framework/**/*.h'
-  end
+  s.vendored_libraries  = 'Framework/*.{a}'
   s.ios.deployment_target = '10.0'
 end
