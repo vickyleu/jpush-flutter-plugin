@@ -17,7 +17,6 @@ A new flutter plugin project.
   s.dependency 'Flutter'
   s.subspec 'JPush' do |cs|
         cs.vendored_libraries  = 'Framework/*.{a}'
-        cs.source_files = 'Framework/*.{h,m}'
         cs.public_header_files = 'Framework/**/*.h'
   end
   s.ios.deployment_target = '10.0'
