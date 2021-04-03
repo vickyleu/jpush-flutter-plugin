@@ -15,9 +15,10 @@ A new flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.dependency 'JCore','2.4.0-noidfa'
-  s.dependency 'JPush','3.4.0-noidfa'
-  
-  s.ios.deployment_target = '8.0'
+  s.subspec 'JPush' do |cs|
+        cs.vendored_libraries  = 'Framework/*.{a}'
+        cs.source_files = 'Framework/*.{h,m}'
+  end
+  s.ios.deployment_target = '10.0'
   s.static_framework = true
 end
