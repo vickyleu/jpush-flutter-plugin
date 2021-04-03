@@ -16,5 +16,6 @@ A new flutter plugin project.
   s.public_header_files = 'Classes/**/*.{h}','Framework/**/*.{h}'
   s.dependency 'Flutter'
   s.vendored_libraries  = 'Framework/*.{a}'
+  s.ios.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/Framework" }
   s.ios.deployment_target = '10.0'
 end
