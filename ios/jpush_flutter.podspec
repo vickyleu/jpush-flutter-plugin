@@ -12,10 +12,11 @@ A new flutter plugin project.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'xudong.rao' => 'xudong.rao@outlook.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files  = 'Classes/**/*','Framework/**/*.{h}'
   s.public_header_files = 'Classes/**/*.{h}','Framework/**/*.{h}'
   s.dependency 'Flutter'
-  s.vendored_libraries  = 'Framework/*.{a}'
-  s.ios.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/Framework" }
+  s.vendored_libraries = "Framework/*.{a}"
+  s.requires_arc = true
   s.ios.deployment_target = '10.0'
+
 end

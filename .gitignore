@@ -2,9 +2,10 @@
 .atom/
 .idea/
 .vscode/
-
-Podfile
-Podfile.lock
+.dart_tool
+**/*.flutter-plugins*
+**/*.packages
+**/*.lock
 Pods/
 
 xcuserdata/
