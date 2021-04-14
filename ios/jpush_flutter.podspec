@@ -12,11 +12,19 @@ A new flutter plugin project.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'xudong.rao' => 'xudong.rao@outlook.com' }
   s.source           = { :path => '.' }
-  s.source_files  = 'Classes/**/*','Framework/**/*.{h}'
-  s.public_header_files = 'Classes/**/*.{h}','Framework/**/*.{h}'
-  s.dependency 'Flutter'
-  s.vendored_libraries = "Framework/*.{a}"
-  s.requires_arc = true
-  s.ios.deployment_target = '10.0'
+
+  # other obvious values
+  s.ios.source_files = 'Classes/**/*{.h,.m}'
+  s.ios.public_header_files = 'Classes/**/*{.h}'
+  s.ios.dependency 'Flutter'
+  s.default_subspec = 'MyJpush'
+  s.subspec 'MyJpush' do |jpush|
+    jpush.source_files = 'Framework/**/*{.h}'
+    jpush.public_header_files = 'Framework/**/*{.h}'
+    jpush.preserve_paths = 'Framework/**/*{.h}','Framework/**/*{.a}'
+    jpush.vendored_libraries = 'Framework/**/*{.a}'
+    jpush.library= 'resolv'
+  end
+  s.platform = :ios, '10.0'
 
 end
