@@ -277,7 +277,7 @@ class JPush {
   Future<String> getDeviceToken() async {
     print(flutter_log + "deviceToken:");
     if(_platform.isIOS){
-      final Map<String,dynamic> deviceTokenMap = (await _channel.invokeMethod('deviceToken'));
+      final Map<dynamic,dynamic> deviceTokenMap = (await _channel.invokeMethod('deviceToken'));
        if(deviceTokenMap!=null){
          if(deviceTokenMap.containsKey("deviceToken")){
            return deviceTokenMap["deviceToken"];
