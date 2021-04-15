@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:platform/platform.dart';
@@ -18,7 +19,7 @@ class JPush {
         _platform = platform;
 
   static final JPush _instance =
-      new JPush.private(const MethodChannel('jpush'), const LocalPlatform());
+  new JPush.private(const MethodChannel('jpush'), const LocalPlatform());
 
   EventHandler _onReceiveNotification;
   EventHandler _onOpenNotification;
@@ -102,7 +103,7 @@ class JPush {
     print(flutter_log + "setTags:");
 
     final Map<dynamic, dynamic> result =
-        await _channel.invokeMethod('setTags', tags);
+    await _channel.invokeMethod('setTags', tags);
     return result;
   }
 
@@ -116,7 +117,7 @@ class JPush {
     print(flutter_log + "cleanTags:");
 
     final Map<dynamic, dynamic> result =
-        await _channel.invokeMethod('cleanTags');
+    await _channel.invokeMethod('cleanTags');
     return result;
   }
 
@@ -132,7 +133,7 @@ class JPush {
     print(flutter_log + "addTags:");
 
     final Map<dynamic, dynamic> result =
-        await _channel.invokeMethod('addTags', tags);
+    await _channel.invokeMethod('addTags', tags);
     return result;
   }
 
@@ -147,7 +148,7 @@ class JPush {
     print(flutter_log + "deleteTags:");
 
     final Map<dynamic, dynamic> result =
-        await _channel.invokeMethod('deleteTags', tags);
+    await _channel.invokeMethod('deleteTags', tags);
     return result;
   }
 
@@ -161,7 +162,7 @@ class JPush {
     print(flutter_log + "getAllTags:");
 
     final Map<dynamic, dynamic> result =
-        await _channel.invokeMethod('getAllTags');
+    await _channel.invokeMethod('getAllTags');
     return result;
   }
 
@@ -177,7 +178,7 @@ class JPush {
     print(flutter_log + "setAlias:");
 
     final Map<dynamic, dynamic> result =
-        await _channel.invokeMethod('setAlias', alias);
+    await _channel.invokeMethod('setAlias', alias);
     return result;
   }
 
@@ -191,7 +192,7 @@ class JPush {
     print(flutter_log + "deleteAlias:");
 
     final Map<dynamic, dynamic> result =
-        await _channel.invokeMethod('deleteAlias');
+    await _channel.invokeMethod('deleteAlias');
     return result;
   }
 
@@ -255,7 +256,7 @@ class JPush {
     print(flutter_log + "getLaunchAppNotification:");
 
     final Map<dynamic, dynamic> result =
-        await _channel.invokeMethod('getLaunchAppNotification');
+    await _channel.invokeMethod('getLaunchAppNotification');
     return result;
   }
 
@@ -269,6 +270,17 @@ class JPush {
 
     final String rid = await _channel.invokeMethod('getRegistrationID');
     return rid;
+  }
+  ///
+  /// 获取推送的注册id。
+  ///
+  Future<String> getDeviceToken() async {
+    print(flutter_log + "deviceToken:");
+    if(_platform.isIOS){
+      final String deviceToken = await _channel.invokeMethod('deviceToken');
+      return deviceToken;
+    }
+    return null;
   }
 
   ///
@@ -339,14 +351,14 @@ class LocalNotification {
 
   const LocalNotification(
       {@required this.id,
-      @required this.title,
-      @required this.content,
-      @required this.fireTime,
-      this.buildId,
-      this.extra,
-      this.badge = 0,
-      this.soundName,
-      this.subtitle})
+        @required this.title,
+        @required this.content,
+        @required this.fireTime,
+        this.buildId,
+        this.extra,
+        this.badge = 0,
+        this.soundName,
+        this.subtitle})
       : assert(id != null),
         assert(title != null),
         assert(content != null),

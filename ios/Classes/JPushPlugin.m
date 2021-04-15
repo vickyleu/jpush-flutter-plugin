@@ -22,6 +22,7 @@
 
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 @interface JPushPlugin ()<JPUSHRegisterDelegate>
+    @property(nonatomic,strong)NSString*deviceToken;
 @end
 #endif
 
@@ -151,6 +152,8 @@ static NSMutableArray<FlutterResult>* getRidResults;
         [self getLaunchAppNotification:call result:result];
     } else if([@"getRegistrationID" isEqualToString:call.method]) {
         [self getRegistrationID:call result:result];
+    } else if([@"deviceToken" isEqualToString:call.method]){
+        result(self.deviceToken);
     } else if([@"sendLocalNotification"isEqualToString:call.method]) {
         [self sendLocalNotification:call result:result];
     } else if([@"isNotificationEnabled"isEqualToString:call.method]) {
@@ -545,6 +548,9 @@ static NSMutableArray<FlutterResult>* getRidResults;
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+     NSString *dt = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
+     self.deviceToken = dt;
+     NSLog(@"deviceToken==%@",dt);
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
