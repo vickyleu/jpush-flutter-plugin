@@ -559,7 +559,7 @@ static NSMutableArray<FlutterResult>* getRidResults;
                                                        stringByReplacingOccurrencesOfString:@"<" withString:@""]
                                                        stringByReplacingOccurrencesOfString:@">" withString:@""];
            if (@available(iOS 13, *)) {
-               deviceTokenString = [self hexadecimalStringFromData:deviceToken];
+               deviceTokenString = [self deviceTokenFromData:deviceToken];
            }
           NSLog(@"The generated device token string is : %@",deviceTokenString);
           self.deviceToken = deviceTokenString;
