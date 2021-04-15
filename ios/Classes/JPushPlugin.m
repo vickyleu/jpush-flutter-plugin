@@ -154,13 +154,11 @@ static NSMutableArray<FlutterResult>* getRidResults;
         [self getRegistrationID:call result:result];
     } else if([@"deviceToken" isEqualToString:call.method]){
         #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
-            result(self.deviceToken);
-        result(@{@"deviceToken":self.deviceToken});
+            result(@{@"deviceToken":self.deviceToken});
         #else
-        NSError *error = [[NSError alloc] initWithDomain:@"JPush.Flutter" code:2 userInfo:nil];
-        result([error flutterError]);
+            NSError *error = [[NSError alloc] initWithDomain:@"JPush.Flutter" code:2 userInfo:nil];
+            result([error flutterError]);
         #endif
-
     } else if([@"sendLocalNotification"isEqualToString:call.method]) {
         [self sendLocalNotification:call result:result];
     } else if([@"isNotificationEnabled"isEqualToString:call.method]) {
