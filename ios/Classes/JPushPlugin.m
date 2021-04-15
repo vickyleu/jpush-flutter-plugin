@@ -554,9 +554,10 @@ static NSMutableArray<FlutterResult>* getRidResults;
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
-          NSString *dt = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
-          self.deviceToken = dt;
-          NSLog(@"deviceToken==%@",dt);
+              NSData *data = [[NSData alloc] initWithData:deviceToken];
+              NSString *dt =[data.description stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+              self.deviceToken = dt;
+              NSLog(@"deviceToken==%@",dt);
      #endif
     [JPUSHService registerDeviceToken:deviceToken];
 }
