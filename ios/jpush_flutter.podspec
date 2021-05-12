@@ -25,6 +25,6 @@ A new flutter plugin project.
     jpush.vendored_libraries = 'Framework/**/*{.a}'
     jpush.library= 'resolv'
   end
-  s.platform = :ios, '10.0'
+  s.platform = :ios, '9.0'
 
 end
