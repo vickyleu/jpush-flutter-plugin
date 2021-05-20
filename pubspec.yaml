@@ -5,8 +5,8 @@ version: 0.5.8
 homepage: https://www.jiguang.cn
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
-  flutter: ">=1.10.0"
+  sdk: ">=2.8.0 <3.0.0"
+  flutter: any
 
 dependencies:
   platform: any
